@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">elppa3</string>
+
+
+
+    <string name="titulo">Introduce un titulo</string>
+    <string name="elegirImg">Elegir Video</string>
+    <string name="elegirVideo">Video</string>
+    <string name="SubirArch">Subir Video</string>
+    <string name="mensajesjson_php_elocuente">mensajesJson.php?elocuente=</string>
+    <string name="botonedentificate">aceptar</string>
+    <string name="editar">Date de alta</string>
+    <string name="scrivi">Scrivi</string>
+    <string name="Alta">Alta</string>
+
+    <string name="confirmarpedido">Confirmar pedido</string>
+    <string name="aboutheaderCode">Developed by https://www.google.com</string>
+
+    <string name="entrar">Entrar</string>
+    <string name="carrito">Agregar al Carrito</string>
+
+    <string name="precio">Precio :  </string>
+    <string name="imagendealta">La imagen de alta: es necesaria, pero puede ser cualquier imagen
+pedimos este dato por dar presentación al perfil del usuario y por  razones de seguridad de comandos IA.  </string>
+    <string name="alta">Para darte de alta: importante (selecciona una imagen de tu galería)
+    y (rellena los siguientes campos)
+Nombre,
+    Email,
+    Password: el password(contraseña) pude contener letras y números, por seguridad
+ escribe un password(contraseña) de mino, 8 caracteres que incluyas letras mayúsculas, minúsculas
+Numeroso y caracteres especiales </string>
+
+
+    <string name="seleccionaimagenalta">Selecciona una imagen en tu galeria </string>
+    <string name="alerta"> No se ha podido dar el alta, porque falta la imagen dicha imagen es necesaria
+por motivos de seguridad. No es necesario que sea tu foto, puede ser cualquier imagen, la cual
+identifica tú id y nos facilita el tratamiento del servicio</string>
+    <string name="camposobligatorios">Los siguientes campos son obligatorios para rellenar </string>
+    <string name="aceptacondiciones">Al hacer clic en este botón usted se da alta como usuario, y
+acepta las condiciones del servicio, sus datos resguardados por el cumplimiento de la ley de protección
+de datos . </string>
+    <string name="mailcliente">E-mail donde enviaremos el seguimiento :  </string>
+    <string name="mailempresa">Para cualquier consulta puedes acceder a nuestro chat en directo :
+          </string>
+    <string name="mailempresa2">
+        o enviarnos un  e-mail a la siguiente direccion  :  </string>
+
+    <string name="total">Precio Total a pagar contra rembolso :  </string>
+    <string name="pedido">Pedido detallado de articulos :  </string>
+
+    <string name="factura">
+   Factura correspondiente a tu pedido .
+En los siguientes campos de texto, introduce tu Telelefono y la dirección de entrega .
+Del pedido.
+        :  </string>
+
+    <string name="factura2">
+
+   Recibirás un e-mail en esta dirección de correo:
+        :  </string>
+    <string name="factura3">
+
+      Confirmando el pedido , si no recibes el e-mail , posiblemente lo encuentres en tu sección de span, de la bandeja de correo
+Actualmente, el pago se efectúa contra rembolso .
+        :  </string>
+
+    <string name="actualizar">
+
+Actualizar el app, para un mejor funcionamiento de la aplicacion podras actualizar a la version mar reciente.
+
+         </string>
+    <string name="actualizaresplicacion">
+
+Actualizar
+         </string>
+
+    <string name="indicacionesentrar">
+
+Nobre de usuario y contraseña : si no tines po
+         </string>
+    <string name="indicacionesdatedealta">
+
+Si no eres usuario, date de alta.
+         </string>
+
+    <string name="channel_description">
+
+escripcion notificacion del app de tu supermermaca
+         </string>
+
+    <string name="channel_name">
+
+el nombre del canal
+         </string>
+
+    <string name="masindecativo">
+
+Mas de esta categoria
+         </string>
+    <string name="menindecativo">
+
+Messenger mensajero
+         </string>
+    <string name="carritoindecativo">
+
+Carrito de compra
+         </string>
+    <string name="compracindecativo">
+
+Compras hechas
+         </string>
+    <string name="msnplataformaindecativo">
+
+Messenger global
+         </string>
+    <string name="boradoindicativo">
+
+Borrar esta publicacion
+         </string>
+    <string name="escribe_aqui_tu_busqueda">escribe aqui tu busqueda</string>
+</resources>
