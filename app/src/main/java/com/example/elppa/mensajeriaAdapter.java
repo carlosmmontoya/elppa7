@@ -3,6 +3,7 @@ package com.example.elppa;
 import static androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -155,8 +156,11 @@ public class mensajeriaAdapter extends Adapter<mensajeriaAdapter.ViewHolder> {
         /////////////////////////-----------onclick listener-------------------------------------
         ////  if(localDataSet.get(position).getNombre().equals("carlosmontoya170718@gmail.com")) {
         if(!Objects.equals(localDataSet.get(position).getNombre(), localDataSet.get(position).getColor())) {
-
-            viewHolder.mensaje.setBackgroundColor(Color.parseColor("#90ee90"));
+          ///  Drawable Drawable;
+           /// viewHolder.mensaje.setBackground(android.graphics.drawable.Drawable.createFromPath("@drawable/custom_button"));
+         ///   viewHolder.mensaje.setBackgroundColor(Color.parseColor("#90ee90"));
+viewHolder.mensaje.setBackgroundResource(R.drawable.custom_text_chat);
+         ///  viewHolder.mensaje.setBackgroundColor(Color.parseColor("@drawable/custom_button"));
             viewHolder.mensaje.setText(localDataSet.get(position).getMensaje()+" "+localDataSet.get(position).getLeido());
 
         }else {

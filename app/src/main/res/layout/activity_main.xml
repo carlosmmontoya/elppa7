@@ -1,33 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity"
+    android:orientation="vertical"
     android:id="@+id/main"
 
     >
-    <TextView
-        android:id="@+id/nombrechat"
+    <LinearLayout
+        android:id="@+id/nombrechat2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:background="@drawable/custom_text_chat"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/nombrechat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:background="@drawable/custom_texto_cajatexto"
+            android:padding="3dp"
+
+
+            />
+    </LinearLayout>
+
+
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swip"
         android:layout_width="match_parent"
-        android:layout_height="575dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/nombrechat"
+        app:layout_constraintTop_toBottomOf="@+id/nombrechat2"
+
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
 
-            android:layout_height="575dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+
 
             />
 
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

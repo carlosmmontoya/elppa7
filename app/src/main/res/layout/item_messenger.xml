@@ -17,6 +17,7 @@
         android:background="@color/white"
         android:gravity="left">
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/perfil"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="4dp"
@@ -28,6 +29,7 @@
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:textColor="@color/black"
+            android:background="@drawable/custom_button_chat"
 
             />
     <LinearLayout
@@ -46,7 +48,10 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="4dp"/>
+                android:textSize="18dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/custom_button_chat"
+                />
 
 
         <TextView
@@ -54,7 +59,10 @@
                 android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"/>
+            android:layout_margin="4dp"
+            android:background="@drawable/custom_text_chat"
+
+            />
     </LinearLayout>
 
 

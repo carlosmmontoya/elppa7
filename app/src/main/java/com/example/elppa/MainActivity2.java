@@ -1,8 +1,13 @@
 package com.example.elppa;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +16,14 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -23,7 +31,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.elppa.interfas.avisomensajeinterfas;
 import com.example.elppa.interfas.mensajeinterfas;
+import com.example.elppa.modelo.avisomodelo;
 import com.example.elppa.modelo.mensajeriamodelo;
 
 import java.util.ArrayList;
@@ -79,6 +89,8 @@ public class MainActivity2 extends AppCompatActivity {
     private PendingIntent pendingIntent2;
     private static final String CHANEL_ID2 = "canal3";
     public String pass;
+
+    public String variablemensaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,14 +128,29 @@ public class MainActivity2 extends AppCompatActivity {
                 ////////////////////////////////////////////////////
             }
         });
+        texsent.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                swi();
+                getDatos();
+            }
+        });
+        texsent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swi();
+                getDatos();
+            }
+        });
 
         enviarboton=(Button) findViewById(R.id.enviar);
         enviarboton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                variablemensaje = texsent.getText().toString();
                 uploadEnlinea();
                 uploadImage();
+
 
             }
         });
@@ -137,10 +164,30 @@ public class MainActivity2 extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
+        uploadEnlinea();
+        swi();
         getDatos();
     }
 
+    public void swi(){
 
+        SwipeRefreshLayout swi = (SwipeRefreshLayout) findViewById(R.id.swip);
+        swi.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override public void onRefresh() {
+                        Log.i("tac","iris");
+
+                        getDatos();
+                        swi.setRefreshing(false);
+
+                    }
+                }
+
+        );
+
+
+
+    }
     public void getDatos(){
 
         ///   intent = new Intent(MainActivity.this,MainActivity.class);
@@ -398,7 +445,7 @@ de que sea diferente el user del emisor de esta manera se ejecuta hace lo que ti
 
                 String nombre = CorreoNombreUser;
                 String elocuente = valor;
-                String mensaje = texsent.getText().toString().trim();
+                String mensaje = variablemensaje;
                 String fecha = "2023-09-06 22:56:56";
 
 
@@ -415,7 +462,7 @@ de que sea diferente el user del emisor de esta manera se ejecuta hace lo que ti
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
+/*
         Intent intente = new Intent(MainActivity2.this,MainActivity2.class);
         intente.putExtra("name", valor);
 
@@ -429,9 +476,322 @@ de que sea diferente el user del emisor de esta manera se ejecuta hace lo que ti
         startActivity(intente);
 
         Log.v("acti","funciona el click");
+
+ */
         ///   setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         ///setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+        swi();
+        getDatos();
+        texsent.setText("");
+
+
     }
+
+
+
+    public void conteodetiempomensajepedido2(){
+        /////////////////////////////////////------------------------------
+        int tiempoTranscurrir2 = 3000; //1 segundo, 1000 millisegundos.
+
+        Handler handler2 = new Handler();
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                //***Aquí agregamos el proceso a ejecutar.
+                getDatos();
+                swi();
+
+                handler2.removeCallbacks(null);
+            }
+        }, tiempoTranscurrir2 );//define el tiempo.
+        ///////////////////////////////////-----------------------------------
+    }
+
+    public void conteodetiempomensajepedido3(){
+        /////////////////////////////////////------------------------------
+        /*
+        he cambiado el tiempo de 10000 30000 por que veo que pienso que es el server ademas del recurso de bateria
+        he modificado el tiempo de 30000 a 60000
+         */
+        int tiempoTranscurrir2 = 40000; //1 segundo, 1000 millisegundos.
+
+        Handler handler2 = new Handler();
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                //***Aquí agregamos el proceso a ejecutar.
+                getDatosenlinea();
+
+                handler2.removeCallbacks(null);
+            }
+        }, tiempoTranscurrir2 );//define el tiempo.
+        ///////////////////////////////////-----------------------------------
+    }
+
+    public void onStop() {
+        super.onStop();
+        getDatosenlinea2();
+        conteodetiempomensajepedido2();
+
+    }
+
+    public void conteodetiempomensajepedido4(){
+        /////////////////////////////////////------------------------------
+        /*
+        he cambiado el tiempo de 10000 30000 por que veo que pienso que es el server ademas del recurso de bateria
+        he modificado el tiempo de 30000 a 60000
+         */
+        int tiempoTranscurrir2 = 80000; //1 segundo, 1000 millisegundos.
+
+        Handler handler2 = new Handler();
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                //***Aquí agregamos el proceso a ejecutar.
+                getDatosenlinea2();
+                /// conteodetiempomensajepedido4();
+
+                handler2.removeCallbacks(null);
+            }
+        }, tiempoTranscurrir2 );//define el tiempo.
+        ///////////////////////////////////-----------------------------------
+    }
+
+    public void getDatosenlinea2(){
+
+        ///   intent = new Intent(MainActivity.this,MainActivity.class);
+        ////   startActivity(intent);
+        ///   final ProgressDialog loading = ProgressDialog.show(this, "Subiendo intagram florccrosa...", "Espere por favor");
+
+        ////
+        ////     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        ///     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://"+nombrenegocio+"")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        avisomensajeinterfas interfass7 = retrofit.create(avisomensajeinterfas.class);
+
+
+        Call<List<avisomodelo>> call = interfass7.getDatosenlinea();
+
+        call.enqueue(new Callback<List<avisomodelo>>() {
+            @Override
+            public void onResponse(Call<List<avisomodelo>> call, Response<List<avisomodelo>> response) {
+                List<avisomodelo> Pos = response.body();
+
+
+                ////     recyclerView.setLayoutManager(linearLayoutManager);
+                ArrayList<admin> MyDatasset = new ArrayList<>();
+                int fotoideentero = 0;
+                int i = 0;
+
+                for (avisomodelo avisomodelo : Pos) {
+                    String content = "";
+                    content += "Type " + avisomodelo.getReseptor() + "\n";
+
+                    reseptor = avisomodelo.getReseptor();
+                    mensajedeemisor = avisomodelo.getFecha();///cambie la varible no sale fecha ahora es el mensaje
+                    emisor = avisomodelo.getEmisor();
+                    if(emisor.equals(UserMail)){
+
+                    }else{
+                        if(emisor.equals(valor)){
+
+                            ///       conteodetiempomensajepedido();;
+                            showNotification2();
+
+                        }
+
+
+                        // conteodetiempomensajepedido2();
+                    }
+
+
+
+
+
+
+
+                    ////   MyDatasset.add(new msnheder(msnmodelo.getId(),msnmodelo.getName(),msnmodelo.getSurname(),msnmodelo.getEmail(),msnmodelo.getHash(),msnmodelo.getRoll(),msnmodelo.getToken(),msnmodelo.getUpdated_at()));
+
+
+                    ///   holderadapter = new msnAdapter(MyDatasset);
+                    ///   recyclerView.setAdapter(holderadapter);
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<List<avisomodelo>> call, Throwable t) {
+
+            }
+
+        });
+
+
+
+
+
+    }
+    //////////////////////////////////////////-----------------------------------------
+
+
+    public void getDatosenlinea(){
+
+        ///   intent = new Intent(MainActivity.this,MainActivity.class);
+        ////   startActivity(intent);
+        ///   final ProgressDialog loading = ProgressDialog.show(this, "Subiendo intagram florccrosa...", "Espere por favor");
+
+        ////
+        ////     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        ///     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://"+nombrenegocio+"")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        avisomensajeinterfas interfass7 = retrofit.create(avisomensajeinterfas.class);
+
+
+        Call<List<avisomodelo>> call = interfass7.getDatosenlinea();
+
+        call.enqueue(new Callback<List<avisomodelo>>() {
+            @Override
+            public void onResponse(Call<List<avisomodelo>> call, Response<List<avisomodelo>> response) {
+                List<avisomodelo> Pos = response.body();
+
+
+                ////     recyclerView.setLayoutManager(linearLayoutManager);
+                ArrayList<admin> MyDatasset = new ArrayList<>();
+                int fotoideentero = 0;
+                int i = 0;
+
+                for (avisomodelo avisomodelo : Pos) {
+                    String content = "";
+                    content += "Type " + avisomodelo.getReseptor() + "\n";
+
+                    reseptor = avisomodelo.getReseptor();
+                    mensajedeemisor = avisomodelo.getFecha();///cambie la varible no sale fecha ahora es el mensaje
+                    emisor = avisomodelo.getEmisor();
+                    if(emisor.equals(UserMail)){
+
+                    }else{
+                        ////  showNotification2();
+
+                        conteodetiempomensajepedido2();
+                        leido = "  ✓✓ ";
+                    }
+
+
+
+
+
+
+
+                    ////   MyDatasset.add(new msnheder(msnmodelo.getId(),msnmodelo.getName(),msnmodelo.getSurname(),msnmodelo.getEmail(),msnmodelo.getHash(),msnmodelo.getRoll(),msnmodelo.getToken(),msnmodelo.getUpdated_at()));
+
+
+                    ///   holderadapter = new msnAdapter(MyDatasset);
+                    ///   recyclerView.setAdapter(holderadapter);
+
+
+                }
+
+            }
+
+
+            @Override
+            public void onFailure(Call<List<avisomodelo>> call, Throwable t) {
+
+            }
+
+        });
+
+
+        conteodetiempomensajepedido3();
+
+
+    }
+    //////////////////////////////////////////-----------------------------------------
+
+    ////////////////////////////////////////////////////////NOTIFICACIONES2
+
+
+    private void showNotification2() {
+        pendingIntent2=null;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANEL_ID2, "NEW", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
+            shwNewNotification2();
+        }
+    }
+
+
+    private void shwNewNotification2() {
+
+        setPendingIntent2(MainActivity2.class);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANEL_ID2)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                ////  .setContentTitle(emisor+" dice : "+mensajedeemisor)
+                .setContentTitle(mensajedeemisor)
+
+
+                .setContentText("reseptor "+reseptor)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent2);
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getApplicationContext());
+        managerCompat.notify(1,builder.build());
+    }
+
+    private void setPendingIntent2(Class<?> MainActivity2) {
+
+        /*
+
+
+                intente = new Intent(v.getContext(),MainActivity8.class);
+                intente.putExtra("name", localDataSet.get(position).getEmail());
+                intente.putExtra("usermail", localDataSet.get(position).getUsermail());
+                intente.putExtra("nombrecomunica", localDataSet.get(position).getName());
+
+                        intent.putExtra("name", localDataSet.get(position).getEmail());
+                intent.putExtra("usermail", localDataSet.get(position).getUserMail());
+                intent.putExtra("nombrecomunica", "carlosmontoya170718@gmail.com");
+         */
+
+        Intent intent7 = null;
+        intent7 = new Intent(MainActivity2.this, MainActivity2.class);
+
+        intent7.putExtra("name",emisor);
+        intent7.putExtra("usermail",reseptor);
+        intent7.putExtra("nombrecomunica","no transmite");
+
+
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity2);
+
+        stackBuilder.addNextIntent(intent7);
+
+        ///  pendingIntent2 = stackBuilder.getPendingIntent(6, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        //  Intención intent = new Intent(context, MainActivity.class);
+        pendingIntent2= PendingIntent.getActivity(getApplicationContext(), 2, intent7, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_CANCEL_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+
+
+    }
+
+
+    ////////////////////////////////////////////////////////NOTIFICACIONES2
+
+    /////////////////////////-----------------------------fin todos los metos para alerta de mensaje
+
 
 }

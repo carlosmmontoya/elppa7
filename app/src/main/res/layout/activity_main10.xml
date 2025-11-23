@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:id="@+id/main"
+
+    tools:context=".MainActivity2">
+
+    <TextView
+
+        android:id="@+id/alerta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alerta"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:textColor="@color/white"
+android:background="@color/black"
+        android:textSize="15dp"
+
+        />
+    <Button
+        android:id="@+id/botonalerta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dar de alta"
+        android:background="@drawable/custom_button"
+        />
+
+<TextView
+    android:id="@+id/alta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/alta"
+    android:textColor="@color/white"
+    android:layout_margin="5dp"
+    android:background="@color/black"
+
+    android:padding="5dp"
+    android:textSize="15dp"
+ />
+    <TextView
+
+        android:id="@+id/camposobligatorios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/camposobligatorios"
+        android:layout_margin="5dp"
+        android:textColor="@color/white"
+   android:background="@color/black"
+        android:textSize="30dp"
+
+        />
+
+    <TextView
+        android:id="@+id/seleccionaimagenalta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/seleccionaimagenalta"
+        android:layout_margin="5dp"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:textSize="25dp"
+      />
+
+
+
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Elegir Imagen"
+        android:layout_margin="5dp"
+        android:background="@drawable/custom_button"
+
+        />
+    <TextView
+        android:id="@+id/imagendealta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/imagendealta"
+        android:layout_margin="5dp"
+        android:textSize="15dp"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+       />
+
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa un nombre"
+        android:textColor="@color/black"
+       android:background="@drawable/custom_texto_cajatexto"
+        android:layout_marginBottom="1dp"
+        android:textSize="15dp"
+        />
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa un e-mail"
+        android:textColor="@color/black"
+        android:layout_marginBottom="1dp"
+        android:textSize="15dp"
+
+
+        android:background="@drawable/custom_texto_cajatexto"
+        />
+    <EditText
+        android:id="@+id/hash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pasword"
+        android:textColor="@color/black"
+        android:background="@drawable/custom_texto_cajatexto"
+        android:layout_marginBottom="1dp"
+        android:textSize="15dp"
+
+        />
+
+    <Button
+        android:id="@+id/btnSubir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aceptar"
+        android:background="@drawable/custom_button"
+        />
+    <TextView
+        android:id="@+id/aceptacondiciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aceptacondiciones"
+        android:layout_margin="5dp"
+        android:textSize="10dp"
+        android:background="@color/black"
+        />
+</LinearLayout>

@@ -5,10 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 public class msnAdapter extends RecyclerView.Adapter<msnAdapter.ViewHolder> {
 
     private ArrayList<msnheder> localDataSet;
-
+    public String nombrenegocio=Gloval.nombrenegocio;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -28,6 +31,7 @@ public class msnAdapter extends RecyclerView.Adapter<msnAdapter.ViewHolder> {
 
         public TextView id;
         public TextView  name;
+        public ImageView perfil;
         private   LinearLayout  LinearLayout;
         /*
         public TextView  Surname;
@@ -58,6 +62,7 @@ public class msnAdapter extends RecyclerView.Adapter<msnAdapter.ViewHolder> {
             /////    headerCode.setMovementMethod(LinkMovementMethod.getInstance());
             name= (TextView) view.findViewById(R.id.name);
             LinearLayout= (LinearLayout) view.findViewById(R.id.lineartextofecha);
+            perfil=(ImageView) view.findViewById(R.id.perfil);
        /*    Surname= (TextView) view.findViewById(R.id.surname);
             email = (TextView) view.findViewById(R.id.email);
             hash= (TextView) view.findViewById(R.id.hash);
@@ -191,12 +196,17 @@ public class msnAdapter extends RecyclerView.Adapter<msnAdapter.ViewHolder> {
         /////////////////////////-----------onclick listener-------------------------------------
         viewHolder.id.setText(localDataSet.get(position).getId());
         viewHolder.name.setText(localDataSet.get(position).getEmail());
-      ////////  viewHolder.Surname.setText(localDataSet.get(position).getSurname());
-  //////    viewHolder.email.setText(localDataSet.get(position).getEmail());
-    /////////    viewHolder.hash.setText(localDataSet.get(position).getHash());
-   ///     viewHolder.roll.setText(localDataSet.get(position).getRoll());
-    ///    viewHolder.token.setText(localDataSet.get(position).getToken());
-        viewHolder.updated_at.setText(localDataSet.get(position).getUpdated_at());
+
+        Picasso.get().load("https://"+nombrenegocio+"public/userImg/"+localDataSet.get(position).getEmail()+".png").into(viewHolder.perfil);
+
+       /// Picasso.get().load("https://"+nombrenegocio+"public/registroUsuarios/alemania/usBerlin/"+localDataSet.get(position).getId()+"/web/"+localDataSet.get(position).getEmail()+".png").into(viewHolder.perfil);
+
+        ////////  viewHolder.Surname.setText(localDataSet.get(position).getSurname());
+    //////    viewHolder.email.setText(localDataSet.get(position).getEmail());
+      /////////    viewHolder.hash.setText(localDataSet.get(position).getHash());
+     ///     viewHolder.roll.setText(localDataSet.get(position).getRoll());
+      ///    viewHolder.token.setText(localDataSet.get(position).getToken());
+       ///   viewHolder.updated_at.setText(localDataSet.get(position).getUpdated_at());
 
        }
 

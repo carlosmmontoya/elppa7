@@ -117,5 +117,11 @@ Messenger global
 
 Borrar esta publicacion
          </string>
+
+    <string name="nombreprograma">
+
+Messenger Prive
+         </string>
     <string name="escribe_aqui_tu_busqueda">escribe aqui tu busqueda</string>
+    <string name="drawable_custom_button_chat">\@drawable/custom_button_chat</string>
 </resources>
